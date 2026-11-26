@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkPro | Marksheet Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div><h1>MarkPro</h1><p>Student Marksheet Generator</p></div>
+      </div>
+      <div class="top-actions">
+        <button id="themeBtn" class="icon-btn" title="Toggle theme">☾</button>
+        <button id="demoBtn" class="ghost-btn">Load Demo</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div>
+          <span class="eyebrow">ACADEMIC RESULT SYSTEM</span>
+          <h2>Generate a clean, professional marksheet.</h2>
+          <p>Enter student information and marks, then generate a result card with performance insights.</p>
+        </div>
+        <div class="hero-stat"><strong id="studentCount">0</strong><span>Saved Records</span></div>
+      </section>
+
+      <section class="grid">
+        <div class="panel form-panel">
+          <div class="panel-title">
+            <div><span class="step">01</span><h3>Student Details</h3></div>
+            <span class="status-dot">● Ready</span>
+          </div>
+
+          <div class="form-grid">
+            <label>Student Name<input id="name" type="text" placeholder="e.g. Rahul Sharma"></label>
+            <label>Roll Number<input id="roll" type="text" placeholder="e.g. 101"></label>
+            <label>Class / Semester<input id="className" type="text" placeholder="e.g. BCA 2nd Sem"></label>
+            <label>Academic Year<select id="year"><option>2026-27</option><option>2025-26</option><option>2027-28</option></select></label>
+          </div>
+
+          <div class="panel-title marks-title">
+            <div><span class="step">02</span><h3>Subject Marks</h3></div>
+            <span class="hint">0–100 each</span>
+          </div>
+
+          <div class="marks-grid" id="marksGrid"></div>
+
+          <div class="actions">
+            <button class="primary" id="generateBtn">Generate Marksheet <span>→</span></button>
+            <button class="secondary" id="clearBtn">Clear</button>
+          </div>
+        </div>
+
+        <div class="panel result-panel" id="resultPanel">
+          <div class="result-empty" id="emptyState">
+            <div class="empty-icon">✦</div>
+            <h3>Your result appears here</h3>
+            <p>Fill in the student details and marks, then click <b>Generate Marksheet</b>.</p>
+          </div>
+
+          <div id="resultContent" class="hidden">
+            <div class="result-head">
+              <div>
+                <span class="eyebrow">MARKSHEET</span>
+                <h3 id="resultName">Student Name</h3>
+                <p id="resultMeta">Roll • Class • Academic Year</p>
+              </div>
+              <div class="grade" id="gradeBadge">A+</div>
+            </div>
+
+            <div class="metrics">
+              <div><span>Total</span><strong id="total">0 / 500</strong></div>
+              <div><span>Percentage</span><strong id="percentage">0%</strong></div>
+              <div><span>Average</span><strong id="average">0</strong></div>
+              <div><span>Result</span><strong id="resultStatus">PASS</strong></div>
+            </div>
+
+            <div class="performance">
+              <div class="perf-top"><span>Overall Performance</span><b id="performanceText">Excellent</b></div>
+              <div class="bar"><i id="progress"></i></div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Subject</th><th>Marks</th><th>Performance</th></tr></thead>
+                <tbody id="resultTable"></tbody>
+              </table>
+            </div>
+
+            <div class="insight-grid">
+              <div class="insight"><span>★ Best Subject</span><b id="bestSubject">—</b></div>
+              <div class="insight"><span>Lowest Score</span><b id="lowestSubject">—</b></div>
+            </div>
+
+            <div class="remark" id="remark">Keep up the great work!</div>
+
+            <div class="result-actions">
+              <button class="primary" id="printBtn">Print / Save PDF</button>
+              <button class="secondary" id="copyBtn">Copy Summary</button>
+              <button class="secondary" id="saveBtn">Save Record</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="records panel">
+        <div class="panel-title">
+          <div><span class="step">03</span><h3>Saved Student Records</h3></div>
+          <button id="clearRecords" class="danger-btn">Clear Records</button>
+        </div>
+        <div id="recordsList" class="records-list">
+          <div class="record-empty">No saved records yet.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>MarkPro • Frontend demonstration for the C Marksheet Generator project</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
